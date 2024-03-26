@@ -21,11 +21,12 @@ let block = document.querySelector(".mainImg");
 //이벤트리스너 잡아서 깃허브에서 url을 가져와서 json 패싱하는것. dateData는 뭔지 모름? 몰?루?
 btn.addEventListener("click", function () {
   const url = `https://api.github.com/users/${input.value}`;
+  //바이오 부분 따오는 용도 api.
   async function getUrl() {
     const response = await fetch(url);
     const data = await response.json();
     const dateData = data.created_at.slice(0, data.created_at.length - 10);
-
+    //데이터 받는 부분에서 -10 해야지 정상으로 출력되더라고요.
 
     //src부분을 avatar에 넣어줌. 
     img.src = data.avatar_url;
@@ -41,21 +42,21 @@ btn.addEventListener("click", function () {
     followings.innerHTML = data.following;
     locations.innerHTML =
       data.location === "" || data.location === null
-        ? "No Location"
+        ? "주소가 없습니다."
         : data.location;
     twit.innerHTML =
       data.twitter_username === "" || data.twitter_username === null
-        ? "No Twitter"
+        ? "트위터가 없습니다."
         : data.twitter_username;
     websites.innerHTML =
-      data.blog === "" || data.blog === null ? "No Website" : data.blog;
+      data.blog === "" || data.blog === null ? "웹사이트가 없습니다." : data.blog;
     companies.innerHTML =
       data.company === "" || data.company === null
-        ? "No Company"
+        ? "회사가 없습니다."
         : data.company;
     gitBio.innerHTML =
       data.bio === "" || data.bio === null
-        ? "이 프로필에는 바이오가 없습니다..."
+        ? "프로필을 정해두지 않으셨습니다."
         : data.bio;
   }
   getUrl();
