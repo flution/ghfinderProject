@@ -17,7 +17,7 @@
   
   /* 다크 모드 */
   :root[color-mode="dark"] {
-    --body-bg-color-: #141d2f;
+    --body-bg-color-: #1d4188;
     --head-color-: #ffffff;
     --darklight-color-: #ffffff;
     --search-bg-color-: #1e2a47;
